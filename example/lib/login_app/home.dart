@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
+import '../pages/load_my_data.dart';
 import '../pages/month_view_page.dart';
 
 class Home extends StatelessWidget {
@@ -38,7 +39,7 @@ class Authentication extends StatelessWidget {
             ],
           );
         }
-        return MonthViewPageDemo();
+        return LoadMyData();
       },
     );
   }
