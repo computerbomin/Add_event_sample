@@ -12,18 +12,25 @@ class LoadMyData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //############ 이벤트 데이터 리스트 선언 ############
+    late List<CalendarEventData<Event>> _events;
+
     return StreamBuilder<List<User>>(
       stream: readUsers(),
       builder: (context, snapshot) {
         if(snapshot.hasError){}
         else if (snapshot.hasData){
           final users = snapshot.data!;
+
+          //############ 이벤트 데이터 리스트 초기화 ############
+          _events = UserPage.getAllEvents(users);
+
           return CalendarControllerProvider(
               controller: EventController<Event>()
-                ..addAll(UserPage.getAllEvents(users)),
+                ..addAll(_events),
               child: Scaffold(
                 // title: 'Flutter Calendar Page Demo',
-                appBar: AppBar(title: Text('Flutter Calendar Page Demo')),
+                // appBar: AppBar(title: Text('Flutter Calendar Page Demo')),
                 body: MonthViewPageDemo(),
               )
           );
@@ -31,23 +38,6 @@ class LoadMyData extends StatelessWidget {
         return Text("error");
       }
     );
-    // StreamBuilder<List<User>>(
-    //     stream: readUsers(),
-    //     builder: (context, snapshot) {
-    //       if(snapshot.hasError){
-    //         //Firebase에서 데이터를 로드할 때 잘못되는 경우 에러 표시
-    //         return Text('Something went worng! ${snapshot.error}');
-    //       } else if (snapshot.hasData){
-    //         final users = snapshot.data!;
-    //
-    //         return ListView(
-    //             children: users.map(buildUser).toList()
-    //         );
-    //       } else {
-    //         return Center(child: CircularProgressIndicator());
-    //       }
-    //     }
-    // ),
   }
 
   Stream<List<User>> readUsers() => FirebaseFirestore.instance

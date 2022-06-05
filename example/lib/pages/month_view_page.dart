@@ -100,7 +100,10 @@ class _MonthViewPageDemoState extends State<MonthViewPageDemo> {
               color: Colors.white,
             ),
             ActionButton(
-              onPressed: (){}, //_removeEvent,
+              onPressed: (){
+                Navigator.pop(context);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage()),);
+              },
               icon: Icon(Icons.delete),
               color: Colors.white,
             ),
@@ -113,15 +116,6 @@ class _MonthViewPageDemoState extends State<MonthViewPageDemo> {
               },
               icon: Icon(Icons.note),
               color: Colors.white,),
-            ActionButton(
-              onPressed: (){
-                Navigator.push(
-                    context,
-                    CupertinoPageRoute(builder: (context) => UserPage())
-                );
-              },
-              icon: Icon(Icons.update),
-              color: Colors.white,),  
           ],
         ),
       ),

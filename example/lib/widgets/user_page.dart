@@ -10,6 +10,7 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import '../app_colors.dart';
 import '../extension.dart';
+import '../pages/load_my_data.dart';
 import 'user.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:calendar_view/calendar_view.dart';
@@ -108,168 +109,98 @@ class _UserPageState extends State<UserPage> {
     return event;
   }
 
-
   Widget buildUser(User user) => Container(
     margin: const EdgeInsets.all(2),
-    padding: const EdgeInsets.all(2),
+    padding: const EdgeInsets.only(left: 22),
     decoration: BoxDecoration(
       border: Border.all(
         color: Color(0xffb3b9ed),
         width: 2,
-        ),
+      ),
       borderRadius: BorderRadius.circular(7),
-      
+
     ),
-    child: Column(
+    child: Row(
       children: [
-      Text("일정 제목 : ${user.title}",
-      style: TextStyle(
-        fontFamily: 'Noto_Serif_KR',
-        color: AppColors.black,
-        fontSize: 15.0,
-        fontWeight: FontWeight.bold,
-      ),
-      ),
-      Text("시작 날짜 : ${user.startDate.toIso8601String()}",
-      style: TextStyle(
-        fontFamily: 'Noto_Serif_KR',
-        color: AppColors.black,
-        fontSize: 15.0,
-        fontWeight: FontWeight.bold,
-      ),
-      ),
-      Text("종료 날짜 ${user.endDate.toIso8601String()}",
-      style: TextStyle(
-        fontFamily: 'Noto_Serif_KR',
-        color: AppColors.black,
-        fontSize: 15.0,
-        fontWeight: FontWeight.bold,
-      ),
-      ),
-      Text("시작 시간 : ${user.startTime.toIso8601String()}",
-      style: TextStyle(
-        fontFamily: 'Noto_Serif_KR',
-        color: AppColors.black,
-        fontSize: 15.0,
-        fontWeight: FontWeight.bold,
-      ),
-      ),
-      Text("종료 시간 : ${user.endTime.toIso8601String()}",
-      style: TextStyle(
-        fontFamily: 'Noto_Serif_KR',
-        color: AppColors.black,
-        fontSize: 15.0,
-        fontWeight: FontWeight.bold,
-      ),
-      ),
-      Text("세부사항 : ${user.description}",
-      style: TextStyle(
-        fontFamily: 'Noto_Serif_KR',
-        color: AppColors.black,
-        fontSize: 15.0,
-        fontWeight: FontWeight.bold,
-      ),
-      ),
-      SizedBox(height: 10,)
+        Column(
+          children: [
+            Text("id : ${user.id}",
+              style: TextStyle(
+                fontFamily: 'Noto_Serif_KR',
+                color: AppColors.black,
+                fontSize: 15.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text("일정 제목 : ${user.title}",
+              style: TextStyle(
+                fontFamily: 'Noto_Serif_KR',
+                color: AppColors.black,
+                fontSize: 15.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text("시작 날짜 : ${user.startDate.toIso8601String()}",
+              style: TextStyle(
+                fontFamily: 'Noto_Serif_KR',
+                color: AppColors.black,
+                fontSize: 15.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text("종료 날짜 ${user.endDate.toIso8601String()}",
+              style: TextStyle(
+                fontFamily: 'Noto_Serif_KR',
+                color: AppColors.black,
+                fontSize: 15.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text("시작 시간 : ${user.startTime.toIso8601String()}",
+              style: TextStyle(
+                fontFamily: 'Noto_Serif_KR',
+                color: AppColors.black,
+                fontSize: 15.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text("종료 시간 : ${user.endTime.toIso8601String()}",
+              style: TextStyle(
+                fontFamily: 'Noto_Serif_KR',
+                color: AppColors.black,
+                fontSize: 15.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text("세부사항 : ${user.description}",
+              style: TextStyle(
+                fontFamily: 'Noto_Serif_KR',
+                color: AppColors.black,
+                fontSize: 15.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+        Expanded(
+          child: IconButton(
+            icon: Icon(Icons.delete),
+            onPressed: () async {
+              final docUser = FirebaseFirestore.instance.collection('${fauth.FirebaseAuth.instance.currentUser?.uid}').doc(user.id);
+              if(user.title.contains(user.title))
+                docUser.delete();
+              Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => LoadMyData()),);
+            },
+          ),
+        )
       ],
     ),
   );
 
   Stream<List<User>> readUsers() => FirebaseFirestore.instance
-     .collection('${fauth.FirebaseAuth.instance.currentUser?.uid}')
-     .snapshots()
-     .map((snapshot) => 
-         snapshot.docs.map((doc) => User.fromJson(doc.data())).toList());
-
-  void f_addEvent(List<User> user) {
-    final event = f_createEvent(user[0]);
-    if (event == null){
-      return showTast('f_addEvent No data');
-    }
-    // ################# 리스트에 반영 되는 부분 ############
-    CalendarControllerProvider
-        .of<Event>(context)
-        .controller
-        .add(event);
-    // setState((){});
-  }
-
-  // Future<void> addDataToList(User user) async {
-  //   // final event = await getEvent(
-  //   //     users._startDate,
-  //   //     users._endTime,
-  //   //     users._startTime,
-  //   //     users._description,
-  //   //     users._endDate,
-  //   //     users._title
-  //   // );
-  //   final event = await context.pushRoute<CalendarEventData<Event>>(
-  //     f_createEvent(user)
-  //   );
-  //   if (event == null){
-  //     return ;
-  //   }
-  //   // ################# 리스트에 반영 되는 부분 ############
-  //   CalendarControllerProvider
-  //       .of<Event>(context)
-  //       .controller
-  //       .add(event);
-  // }
-
-  CalendarEventData<Event> getEvent(DateTime _startDate, DateTime _endTime,
-      DateTime _startTime, String _description, DateTime _endDate, String _title) {
-    final event = CalendarEventData<Event>(
-      date: _startDate,
-      color: Colors.green,
-      endTime: _endTime,
-      startTime: _startTime,
-      description: _description,
-      endDate: _endDate,
-      title: _title,
-      event: Event(
-        title: _title,
-      ),
-    );
-  // CalendarEventData<Event> getEvent() {
-  //   final event = CalendarEventData<Event>(
-  //     date: users._startDate,
-  //     color: Colors.blue,
-  //     endTime: users._endTime,
-  //     startTime: users._startTime,
-  //     description: users._description,
-  //     endDate: users._endDate,
-  //     title: users._title,
-  //     event: Event(
-  //       title: users._title,
-  //     ),
-  //   );
-
-    return event;
-  }
-
-  CalendarEventData<Event> f_createEvent(User users) {
-    //############# 입력한 값들로 이벤트 객체 생성 ###########
-    final event = CalendarEventData<Event>(
-      date: users.startDate,
-      color: Colors.green,
-      endTime: users.endDate,
-      startTime: users.startTime,
-      description: users.description,
-      endDate: users.endDate,
-      title: users.title,
-      event: Event(
-        title: users.title,
-      ),
-    );
-
-    return event;
-  }
-
-  void showTast(String message) {
-    Fluttertoast.showToast(msg : message,
-    backgroundColor : Colors.white,
-    toastLength : Toast.LENGTH_SHORT,
-    gravity : ToastGravity.BOTTOM);
-  }
+      .collection('${fauth.FirebaseAuth.instance.currentUser?.uid}')
+      .snapshots()
+      .map((snapshot) =>
+      snapshot.docs.map((doc) => User.fromJson(doc.data())).toList());
 }
-
