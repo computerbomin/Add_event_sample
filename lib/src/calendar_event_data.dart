@@ -47,8 +47,8 @@ class CalendarEventData<T> {
     this.endTime,
     DateTime? endDate,
     required this.date,
-  }) : _endDate = endDate;
-
+  }): _endDate = endDate;
+  //
   DateTime get endDate => _endDate ?? date;
 
   Map<String, dynamic> toJson() => {

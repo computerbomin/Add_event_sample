@@ -31,13 +31,17 @@ class UserPage extends StatefulWidget {
     return tmp;
   }
 
+  // ############## 백업으로 가져온 데이터 파씽 #############
   static CalendarEventData<Event> parseEvent(User user) {
     final event = CalendarEventData<Event>(
       title : user.title,
       description : user.description,
       // event : user.event.toIso8601String();
+
+      // ############ 파이어베이스에 Color 속성 값 만들어주면 수정 필요 #########
       color : Colors.green,
       startTime : user.startTime,
+      endDate : user.endDate,
       endTime : user.endTime,
       date : user.startDate,
       event: Event(
