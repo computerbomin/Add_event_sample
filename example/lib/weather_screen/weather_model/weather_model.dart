@@ -30,31 +30,31 @@ class WeatherModel {
   Widget? getAirIcon(int index) {
     if (index == 1) {
       return Image.asset(
-        'image/weather_good.png',
+        'image/close.png',
         width: 37.0,
         height: 35.0,
       );
     } else if (index == 2) {
       return Image.asset(
-        'image/weather_fair.png',
+        'image/standing.jpg',
         width: 37.0,
         height: 35.0,
       );
     } else if (index == 3) {
       return Image.asset(
-        'image/weather_moderate.png',
+        'image/ground.jpg',
         width: 37.0,
         height: 35.0,
       );
     } else if (index == 4) {
       return Image.asset(
-        'image/weather_poor.png',
+        'image/speaking.png',
         width: 37.0,
         height: 35.0,
       );
     } else if (index == 5) {
       return Image.asset(
-        'image/weather_bad.png',
+        'image/back.png',
         width: 37.0,
         height: 35.0,
       );
@@ -66,40 +66,45 @@ class WeatherModel {
       return Text(
         '"매우좋음"',
         style: TextStyle(
-          color: Colors.indigo,
+          color: Colors.blueAccent,
           fontWeight: FontWeight.bold,
+          fontFamily: 'Gamja_Flower',
         ),
       );
     } else if (index == 2) {
       return Text(
         '"좋음"',
         style: TextStyle(
-          color: Colors.indigo,
+          color: Colors.blueAccent,
           fontWeight: FontWeight.bold,
+          fontFamily: 'Gamja_Flower',
         ),
       );
     } else if (index == 3) {
       return Text(
         '"보통"',
         style: TextStyle(
-          color: Colors.black87,
+          color: Colors.blueAccent,
           fontWeight: FontWeight.bold,
+          fontFamily: 'Gamja_Flower',
         ),
       );
     } else if (index == 4) {
       return Text(
         '"나쁨"',
         style: TextStyle(
-          color: Colors.black87,
+          color: Colors.blueAccent,
           fontWeight: FontWeight.bold,
+          fontFamily: 'Gamja_Flower',
         ),
       );
     } else if (index == 5) {
       return Text(
         '"매우나쁨"',
         style: TextStyle(
-          color: Colors.black87,
+          color: Colors.blueAccent,
           fontWeight: FontWeight.bold,
+          fontFamily: 'Gamja_Flower',
         ),
       );
     }

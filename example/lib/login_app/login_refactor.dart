@@ -30,7 +30,7 @@ class _LogInRefacState extends State<LogInRefac> {
         appBar: AppBar(
           title: Text("T4 Calendar",
             style: TextStyle(
-              fontFamily: 'Noto_Sans_KR',
+              fontFamily: 'Gamja_Flower',
               fontSize: 25.0,
               fontWeight: FontWeight.bold,
               color: Colors.white,

@@ -406,14 +406,14 @@ class WeekViewState<T> extends State<WeekView<T>> {
           Text(
             Constants.weekTitles[date.weekday - 1],
             style: TextStyle(
-              fontFamily: 'Noto_Serif_KR',
+              fontFamily: 'Gamja_Flower',
               fontSize: 15.0,
               fontWeight: FontWeight.bold,
               color: Colors.white54,
             ),),
           Text(date.day.toString(),
             style: TextStyle(
-            fontFamily: 'Noto_Serif_KR',
+            fontFamily: 'Gamja_Flower',
             fontSize: 15.0,
             fontWeight: FontWeight.bold,
             color: Colors.white54,
@@ -437,7 +437,7 @@ class WeekViewState<T> extends State<WeekView<T>> {
           //"${((date.hour - 1) % 12) + 1} ${date.hour ~/ 12 == 0 ? "am" : "pm"}",
           textAlign: TextAlign.right,
           style: TextStyle(
-            fontFamily: 'Noto_Serif_KR',
+            fontFamily: 'Gamja_Flower',
             fontSize: 15.0,
             fontWeight: FontWeight.bold,
             color: Colors.white54,
@@ -460,7 +460,7 @@ class WeekViewState<T> extends State<WeekView<T>> {
         borderRadius: BorderRadius.circular(6.0),
         title: events[0].title,
         titleStyle: TextStyle(
-          fontFamily: 'Noto_Serif_KR',
+          fontFamily: 'Gamja_Flower',
           fontSize: 12,
           color: events[0].color.accent,
           fontWeight: FontWeight.bold,

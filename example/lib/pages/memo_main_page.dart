@@ -29,7 +29,7 @@ class _MemoMainState extends State<MemoMain> {
           title: Text(
             '일기',
             style: TextStyle(
-              fontFamily: 'Noto_Serif_KR',
+              fontFamily: 'Gamja_Flower',
               fontSize: 20.0,
               color: Color.fromARGB(255, 255, 255, 255),
             ),

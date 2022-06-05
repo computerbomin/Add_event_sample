@@ -16,7 +16,6 @@ class EditPage extends StatefulWidget {
 }
 
 class _EditPage extends State<EditPage> {
-
   String title = '';
   String text = '';
   //List<XFile>? imageFileList;
@@ -55,56 +54,82 @@ class _EditPage extends State<EditPage> {
             onPressed: saveDB,
           ),
         ],
-        title: Text('메모 추가'),
+        title: Text(
+          '메모 추가',
+          style: TextStyle(fontFamily: 'Gamja_Flower'),
+        ),
       ),
-      body:
-      Padding(
+      body: Padding(
         padding: EdgeInsets.all(10),
         child: Column(
-            children: <Widget>[
-               TextField(
-                //obscureText: true,
-                 onChanged: (String title){ this.title = title; },
-                 //제목 입력하거나 바뀌면 title로 넘어간다. 맨 위의 title에 저장됨.
-                 keyboardType: TextInputType.multiline,
-                 maxLines: 2,
-                 style: TextStyle(
-                   fontSize: 15,
-                 ),
-                decoration: InputDecoration(
+          children: <Widget>[
+            TextField(
+              //obscureText: true,
+              onChanged: (String title) {
+                this.title = title;
+              },
+              //제목 입력하거나 바뀌면 title로 넘어간다. 맨 위의 title에 저장됨.
+              keyboardType: TextInputType.multiline,
+              maxLines: 2,
+              style: TextStyle(
+                fontSize: 15,
+              ),
+              decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: '제목',
+                labelStyle: TextStyle(
+                  fontFamily: 'Gamja_Flower',
+                  fontSize: 17,
+                ),
                 hintText: '제목을 입력하시오.',
-                ),),
-              Padding(padding: EdgeInsets.all(10)),
-              TextField(
-                //obscureText: true,
-                onChanged: (String text){ this.text = text; },
-                keyboardType: TextInputType.multiline,
-                maxLines: 8,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: '내용',
-                  hintText: '내용을 입력하시오.',
-                ),),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GridView.builder(
-                      itemCount: imageFileList!.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3),
-                      itemBuilder: (BuildContext context, int index) {
-                        return Image.file(File(imageFileList![index].path),
-                            fit: BoxFit.cover);
-                      }),
+                hintStyle: TextStyle(
+                fontFamily: 'Gamja_Flower',
+                fontSize: 17,
+              ),
+              ),
+            ),
+            Padding(padding: EdgeInsets.all(10)),
+            TextField(
+              //obscureText: true,
+              onChanged: (String text) {
+                this.text = text;
+              },
+              keyboardType: TextInputType.multiline,
+              maxLines: 8,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: '내용',
+                labelStyle: TextStyle(
+                  fontFamily: 'Gamja_Flower',
+                  fontSize: 17,
+                ),
+                hintText: '내용을 입력하시오.',
+                hintStyle: TextStyle(
+                  fontFamily: 'Gamja_Flower',
+                  fontSize: 17,
                 ),
               ),
-        ],),
-      ),);
-}
-  Future<void> saveDB() async{
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GridView.builder(
+                    itemCount: imageFileList!.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3),
+                    itemBuilder: (BuildContext context, int index) {
+                      return Image.file(File(imageFileList![index].path),
+                          fit: BoxFit.cover);
+                    }),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
+  Future<void> saveDB() async {
     DBHelper sd = DBHelper();
 
     var fido = Memo(

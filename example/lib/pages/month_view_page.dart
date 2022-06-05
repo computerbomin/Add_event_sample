@@ -45,7 +45,7 @@ class _MonthViewPageDemoState extends State<MonthViewPageDemo> {
           centerTitle: true,
           title: Text('T4 Calendar Demo',
             style: TextStyle(
-              fontFamily: 'Noto_Sans_KR',
+              fontFamily: 'Gamja_Flower',
               fontSize: 20.0,
               color: Color.fromARGB(255, 255, 255, 255),
             ),),
@@ -74,6 +74,7 @@ class _MonthViewPageDemoState extends State<MonthViewPageDemo> {
                       topLeft: Radius.circular(10),
                       topRight: Radius.circular(10)),
                   color: Colors.white10),
+              labelStyle: TextStyle(fontFamily: 'Gamja_Flower'),
               //TabBar style
               tabs: [
                 Tab(icon: Icon(Icons.calendar_month_outlined), text: 'Month',),

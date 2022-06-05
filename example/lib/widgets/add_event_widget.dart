@@ -38,7 +38,7 @@ class _AddEventWidgetState extends State<AddEventWidget> {
 
   String _description = "";
 
-  Color _color = Colors.blue;
+  Color _color = Colors.orangeAccent;
 
   late FocusNode _titleNode;
 
@@ -94,7 +94,7 @@ class _AddEventWidgetState extends State<AddEventWidget> {
                 labelText: "일정 제목",
               ),
               style: TextStyle(
-                fontFamily: 'Noto_Serif_KR',
+                fontFamily: 'Gamja_Flower',
                 color: AppColors.black,
                 fontSize: 17.0,
               ),
@@ -126,7 +126,7 @@ class _AddEventWidgetState extends State<AddEventWidget> {
                       return null;
                     },
                     textStyle: TextStyle(
-                      fontFamily: 'Noto_Serif_KR',
+                      fontFamily: 'Gamja_Flower',
                       color: AppColors.black,
                       fontSize: 15.0,
                     ),
@@ -148,7 +148,7 @@ class _AddEventWidgetState extends State<AddEventWidget> {
                       return null;
                     },
                     textStyle: TextStyle(
-                      fontFamily: 'Noto_Serif_KR',
+                      fontFamily: 'Gamja_Flower',
                       color: AppColors.black,
                       fontSize: 15.0,
                     ),
@@ -177,7 +177,7 @@ class _AddEventWidgetState extends State<AddEventWidget> {
                     },
                     onSave: (date) => _startTime = date,
                     textStyle: TextStyle(
-                      fontFamily: 'Noto_Serif_KR',
+                      fontFamily: 'Gamja_Flower',
                       color: AppColors.black,
                       fontSize: 15.0,
                     ),
@@ -199,7 +199,7 @@ class _AddEventWidgetState extends State<AddEventWidget> {
                     },
                     onSave: (date) => _endTime = date,
                     textStyle: TextStyle(
-                      fontFamily: 'Noto_Serif_KR',
+                      fontFamily: 'Gamja_Flower',
                       color: AppColors.black,
                       fontSize: 15.0,
                     ),
@@ -214,7 +214,7 @@ class _AddEventWidgetState extends State<AddEventWidget> {
             TextFormField(
               focusNode: _descriptionNode,
               style: TextStyle(
-                fontFamily: 'Noto_Serif_KR',
+                fontFamily: 'Gamja_Flower',
                 color: AppColors.black,
                 fontSize: 17.0,
               ),
@@ -243,7 +243,7 @@ class _AddEventWidgetState extends State<AddEventWidget> {
                 Text(
                   "색 설정: ",
                   style: TextStyle(
-                    fontFamily: 'Noto_Serif_KR',
+                    fontFamily: 'Gamja_Flower',
                     color: AppColors.black,
                     fontSize: 17,
                   ),
@@ -284,7 +284,7 @@ class _AddEventWidgetState extends State<AddEventWidget> {
   }
 
   Future _createUser(User user) async {
-    final docUser = FirebaseFirestore.instance.collection('${fauth.FirebaseAuth.instance.currentUser?.uid}').doc();
+    final docUser = FirebaseFirestore.instance.collection('${fauth.FirebaseAuth.instance.currentUser?.uid}_scheduled').doc();
     user.id = docUser.id;
 
     final json = user.toJson();
@@ -341,7 +341,7 @@ class _AddEventWidgetState extends State<AddEventWidget> {
           Text(
             "색 설정",
             style: TextStyle(
-              fontFamily: 'Noto_Serif_KR',
+              fontFamily: 'Gamja_Flower',
               color: AppColors.black,
               fontSize: 25.0,
             ),

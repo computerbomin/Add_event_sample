@@ -42,7 +42,7 @@ class CalendarEventData<T> {
     required this.title,
     this.description = "",
     this.event,
-    this.color = Colors.blue,
+    this.color = Colors.orangeAccent,
     this.startTime,
     this.endTime,
     DateTime? endDate,

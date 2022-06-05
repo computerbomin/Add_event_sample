@@ -41,7 +41,7 @@ class LoadMyData extends StatelessWidget {
   }
 
   Stream<List<User>> readUsers() => FirebaseFirestore.instance
-      .collection('${fauth.FirebaseAuth.instance.currentUser?.uid}')
+      .collection('${fauth.FirebaseAuth.instance.currentUser?.uid}_scheduled')
       .snapshots()
       .map((snapshot) =>
       snapshot.docs.map((doc) => User.fromJson(doc.data())).toList());

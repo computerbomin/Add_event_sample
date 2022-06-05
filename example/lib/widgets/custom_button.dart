@@ -33,7 +33,7 @@ class CustomButton extends StatelessWidget {
         child: Text(
           title,
           style: TextStyle(
-            fontFamily: 'Noto_Sans_KR',
+            fontFamily: 'Gamja_Flower',
             color: AppColors.white,
             fontSize: 20,
           ),

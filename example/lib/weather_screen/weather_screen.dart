@@ -112,7 +112,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             Text(
                               '$cityName',
                               style: TextStyle(
-                                fontFamily: 'Noto_Sans_KR',
+                                fontFamily: 'Gamja_Flower',
                                 fontSize: 20.0,
                                 color: Color.fromARGB(255, 255, 255, 255),
                               ),
@@ -126,7 +126,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                     return Text(
                                       '${getSystemTime()}',
                                       style: TextStyle(
-                                        fontFamily: 'Noto_Sans_KR',
+                                        fontFamily: 'Gamja_Flower',
                                         fontSize: 20.0,
                                         color: Color.fromARGB(255, 255, 255, 255),
                                       ),
@@ -135,14 +135,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 ),
                                 Text(DateFormat(' - EEEE, ').format(date),
                                   style: TextStyle(
-                                    fontFamily: 'Noto_Sans_KR',
+                                    fontFamily: 'Gamja_Flower',
                                     fontSize: 20.0,
                                     color: Color.fromARGB(255, 255, 255, 255),
                                   ),
                                 ),
                                 Text(DateFormat('yyyy년 M월 d일').format(date),
                                   style: TextStyle(
-                                    fontFamily: 'Noto_Sans_KR',
+                                    fontFamily: 'Gamja_Flower',
                                     fontSize: 20.0,
                                     color: Color.fromARGB(255, 255, 255, 255),
                                   ),
@@ -157,7 +157,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             Text(
                               '$temp\u2103',
                               style: TextStyle(
-                                fontFamily: 'Noto_Sans_KR',
+                                fontFamily: 'Gamja_Flower',
                                 fontSize: 40.0,
                                 color: Color.fromARGB(255, 255, 255, 255),
                               ),
@@ -200,7 +200,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               Text(
                                 'AQI(대기질지수)',
                                 style: TextStyle(
-                                  fontFamily: 'Noto_Sans_KR',
+                                  fontFamily: 'Gamja_Flower',
                                   fontSize: 15.0,
                                   color: Color.fromARGB(255, 255, 255, 255),
                                 ),
@@ -220,7 +220,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               Text(
                                 '미세먼지',
                                 style: TextStyle(
-                                  fontFamily: 'Noto_Sans_KR',
+                                  fontFamily: 'Gamja_Flower',
                                   fontSize: 15.0,
                                   color: Color.fromARGB(255, 255, 255, 255),
                                 ),
@@ -231,7 +231,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               Text(
                                 '$dust1',
                                 style: TextStyle(
-                                  fontFamily: 'Noto_Sans_KR',
+                                  fontFamily: 'Gamja_Flower',
                                   fontSize: 20.0,
                                   color: Color.fromARGB(255, 255, 255, 255),
                                 ),
@@ -243,7 +243,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               Text(
                                 '㎍/m3',
                                 style: TextStyle(
-                                  fontFamily: 'Noto_Sans_KR',
+                                  fontFamily: 'Gamja_Flower',
                                   fontSize: 10.0,
                                   color: Color.fromARGB(255, 255, 255, 255),
                                 ),
@@ -255,7 +255,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               Text(
                                 '초미세먼지',
                                 style: TextStyle(
-                                  fontFamily: 'Noto_Sans_KR',
+                                  fontFamily: 'Gamja_Flower',
                                   fontSize: 15.0,
                                   color: Color.fromARGB(255, 255, 255, 255),
                                 ),
@@ -266,7 +266,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               Text(
                                 '$dust2',
                                 style: TextStyle(
-                                  fontFamily: 'Noto_Sans_KR',
+                                  fontFamily: 'Gamja_Flower',
                                   fontSize: 20.0,
                                   color: Color.fromARGB(255, 255, 255, 255),
                                 ),
@@ -279,7 +279,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               Text(
                                 '㎍/m3',
                                 style: TextStyle(
-                                  fontFamily: 'Noto_Sans_KR',
+                                  fontFamily: 'Gamja_Flower',
                                   fontSize: 10.0,
                                   color: Color.fromARGB(255, 255, 255, 255),
                                 ),

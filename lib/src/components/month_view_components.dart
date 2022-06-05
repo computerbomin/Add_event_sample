@@ -50,7 +50,7 @@ class CircularCell extends StatelessWidget {
         child: Text(
           "${date.day}",
           style: TextStyle(
-            fontFamily: 'Noto_Serif_KR',
+            fontFamily: 'Gamja_Flower',
             fontSize: 20,
             color: shouldHighlight ? highlightedTitleColor : titleColor,
           ),
@@ -103,10 +103,10 @@ class FilledCell<T> extends StatelessWidget {
     required this.events,
     this.isInMonth = false,
     this.shouldHighlight = false,
-    this.backgroundColor = Colors.blue,
-    this.highlightColor = Colors.blue,
+    this.backgroundColor = Colors.orangeAccent,
+    this.highlightColor = Colors.orangeAccent,
     this.onTileTap,
-    this.tileColor = Colors.blue,
+    this.tileColor = Colors.orangeAccent,
     this.highlightRadius = 11,
     this.titleColor = Constants.black,
     this.highlightedTitleColor = Constants.white,
@@ -134,7 +134,7 @@ class FilledCell<T> extends StatelessWidget {
                         ? titleColor
                         : titleColor.withOpacity(0.4),
                 fontSize: 12,
-                fontFamily: 'Noto_Serif_KR',
+                fontFamily: 'Gamja_Flower',
               ),
             ),
           ),
@@ -198,7 +198,7 @@ class MonthPageHeader extends CalendarPageHeader {
     AsyncCallback? onTitleTapped,
     VoidCallback? onPreviousMonth,
     Color iconColor = Constants.black,
-    Color backgroundColor = Constants.headerBackground,
+    Color backgroundColor = Colors.orangeAccent,
     required DateTime date,
   }) : super(
           key: key,
@@ -253,7 +253,7 @@ class WeekDayTile extends StatelessWidget {
         Constants.weekTitles[dayIndex],
         style: textStyle ??
             TextStyle(
-              fontFamily: 'Noto_Serif_KR',
+              fontFamily: 'Gamja_Flower',
               fontSize: 15.0,
               color: Colors.black,
             ),

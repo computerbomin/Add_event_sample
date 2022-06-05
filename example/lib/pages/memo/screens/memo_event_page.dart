@@ -15,7 +15,9 @@ import './../screens/edit.dart';
 import './../screens/view.dart';
 import './../database/db.dart';
 import './../database/memo.dart';
+
 import 'package:firebase_auth/firebase_auth.dart' as fauth;
+
 
 //적은 메모 보여주는 페이지
 
@@ -57,7 +59,7 @@ class _MemoEventState extends State<MemoEvent> {
               context, CupertinoPageRoute(builder: (context) => EditPage()));
         },
         tooltip: '메모 추가를 위해 클릭하시오.',
-        label: Text('메모 추가'),
+        label: Text('메모 추가', style: TextStyle(fontFamily: 'Gamja_Flower'),),
         icon: Icon(Icons.add),
         backgroundColor: Colors.orangeAccent,
       ),
@@ -88,10 +90,15 @@ class _MemoEventState extends State<MemoEvent> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('삭제 경고'),
+          titleTextStyle: TextStyle(fontFamily: 'Gamja_Flower', color: Colors.blueAccent),
           content: Text("정말 삭제하시겠습니까?\n삭제된 메모는 복구되지 않습니다."
               "\n\n이미 업로드한 일기를 삭제하려면\n'업로드한 일기'의 삭제 버튼을 누르시오."),
+          contentTextStyle: TextStyle(fontFamily: 'Gamja_Flower', color: Colors.black),
           actions: <Widget>[
             TextButton(
+              style: TextButton.styleFrom(
+                textStyle: TextStyle(fontFamily: 'Gamja_Flower', color: Colors.blueAccent),
+              ),
               child: Text('삭제'),
               onPressed: () {
                 Navigator.pop(context, "삭제");
@@ -102,6 +109,9 @@ class _MemoEventState extends State<MemoEvent> {
               },
             ),
             TextButton(
+              style: TextButton.styleFrom(
+                textStyle: TextStyle(fontFamily: 'Gamja_Flower', color: Colors.blueAccent),
+              ),
               child: Text('취소'),
               onPressed: () {
                 deleteId = '';
@@ -131,6 +141,7 @@ class _MemoEventState extends State<MemoEvent> {
     }
   }
 
+  /*
   Future<File> saveImagePermanently(String imagePath) async {
     final directory = await getApplicationDocumentsDirectory();
     final name = basename(imagePath);
@@ -138,6 +149,7 @@ class _MemoEventState extends State<MemoEvent> {
 
     return File(imagePath).copy(image.path);
   }
+   */
 
   Widget memoBuilder(BuildContext parentContext) {
     return FutureBuilder(
@@ -151,7 +163,7 @@ class _MemoEventState extends State<MemoEvent> {
             //메모 연동
             Future createUser({required String name}) async {
               final docUser = FirebaseFirestore.instance
-                  .collection('${fauth.FirebaseAuth.instance.currentUser?.uid}')
+                  .collection('${fauth.FirebaseAuth.instance.currentUser?.uid}memomemo')
                   .doc(memo.id);
 
               final json = {
@@ -173,18 +185,26 @@ class _MemoEventState extends State<MemoEvent> {
                 builder: (BuildContext context) {
                   return AlertDialog(
                     title: Text('일기 갱신'),
+                    titleTextStyle: TextStyle(fontFamily: 'Gamja_Flower', color: Colors.blueAccent),
                     content: Text("일기를 업로드 하시겠습니까?"),
+                    contentTextStyle: TextStyle(fontFamily: 'Gamja_Flower', color: Colors.black),
                     actions: <Widget>[
                       TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: TextStyle(fontFamily: 'Gamja_Flower', color: Colors.blueAccent),
+                        ),
                         child: Text('갱신'),
                         onPressed: () {
                           Navigator.pop(context, "갱신");
                           setState(() {
-                            createUser(name: '${fauth.FirebaseAuth.instance.currentUser?.uid}');
+                            createUser(name: '${fauth.FirebaseAuth.instance.currentUser?.uid}memomemo');
                           });
                         },
                       ),
                       TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: TextStyle(fontFamily: 'Gamja_Flower', color: Colors.blueAccent),
+                        ),
                         child: Text('취소'),
                         onPressed: () {
                           deleteId = '';
@@ -208,7 +228,7 @@ class _MemoEventState extends State<MemoEvent> {
                 });
               }, //길게 누르면 삭제
               child: Container(
-                height: 500,
+                height: 600,
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(15),
                 margin: EdgeInsets.all(5),
@@ -238,24 +258,35 @@ class _MemoEventState extends State<MemoEvent> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text(
-                          memo.title,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                        SizedBox(
+                          height: 50,
+                          child: Text(
+                            memo.title,
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontFamily: 'Gamja_Flower',
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          overflow: TextOverflow.ellipsis,
                         ),
-                        Text(
-                          memo.text,
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
+                        SizedBox(
+                          height: 30,
+                          child: Text(
+                            memo.text,
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontFamily: 'Gamja_Flower',
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
+                    ),
+                    SizedBox(
+                      height: 30,
                     ),
                     Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -279,7 +310,8 @@ class _MemoEventState extends State<MemoEvent> {
                             "최종 수정 : " + memo.editTime.split('.')[0],
                             style: TextStyle(
                               fontSize: 15,
-                              color: Colors.black,
+                              color: Colors.white,
+                              fontFamily: 'Gamja_Flower',
                             ),
                             textAlign: TextAlign.right,
                           ),

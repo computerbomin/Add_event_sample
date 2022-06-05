@@ -15,11 +15,11 @@ class Memo {
 
   Map<String, dynamic> toMap() {
     return {
-      'memo_id': id,
-      'memo_title': title,
-      'memo_text': text,
-      'memo_createTime': createTime,
-      'memo_editTime': editTime,
+      'id': id,
+      'title': title,
+      'text': text,
+      'createTime': createTime,
+      'editTime': editTime,
       //'image': image,
     };
   }
@@ -27,7 +27,7 @@ class Memo {
   @override
   String toString() {
     //return 'Memo{id: $id, title:$title, text: $text, createTime: $createTime, editTime: $editTime, image: $image}';
-    return 'Memo{memo_id: $id, memo_title:$title, memo_text: $text, memo_createTime: $createTime, memo_editTime: $editTime}';
+    return 'Memo{id: $id, title:$title, text: $text, createTime: $createTime, editTime: $editTime}';
   }
 
 }

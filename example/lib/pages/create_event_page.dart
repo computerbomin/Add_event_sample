@@ -38,20 +38,20 @@ class _CreateEventPageState extends State<CreateEventPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: Colors.orangeAccent,
         centerTitle: false,
         leading: IconButton(
           onPressed: context.pop,
           icon: Icon(
             Icons.arrow_back,
-            color: AppColors.black,
+            color: AppColors.white,
           ),
         ),
         title: Text(
           '경기일정',
           style: TextStyle(
-            fontFamily: 'Noto_Serif_KR',
-            color: AppColors.black,
+            fontFamily: 'Gamja_Flower',
+            color: AppColors.white,
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
           ),

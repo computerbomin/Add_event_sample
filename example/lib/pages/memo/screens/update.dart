@@ -9,7 +9,9 @@ import './edit.dart';
 import './view.dart';
 import './../database/db.dart';
 import './../database/memo.dart';
+
 import 'package:firebase_auth/firebase_auth.dart' as fauth;
+
 
 String deleteId = '';
 
@@ -39,51 +41,70 @@ class _MemoUpdate extends State<MemoUpdate> {
         ),
       );
 
-  Widget buildUser(User user) => ListTile(
-      leading: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          CircleAvatar(
-            child: Text('${fauth.FirebaseAuth.instance.currentUser?.uid}'[0]),
-          ),
-        ],
+  Widget buildUser(User user) => Card(
+    color: Colors.lightBlueAccent,
+    shape: RoundedRectangleBorder(
+      side: BorderSide(
+        color: Colors.white,
+        width: 3.0,
       ),
-      //add
-      //CircleAvatar(child: Text('${user.id[0]}'),), -> id 사용하고 싶을 때. 근데 user1이 아니고 저장된 id임
-      title: Text(
-        '\n' + user.title + '\n',
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
-      ),
-      subtitle: Text(
-        user.text + '\n\n\n' + user.editTime.substring(0, 16),
-        style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-      ),
-      trailing: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.delete,
-              size: 20.0,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              deleteId = user.id;
-              showAlertDialog(context);
-              /*
-              final docUser =
-                  FirebaseFirestore.instance.collection('user1').doc(user.id);
+      borderRadius: BorderRadius.circular(15.0),
+    ),
+    child:
+      ListTile(
+          leading: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              CircleAvatar(
+            backgroundImage: AssetImage('image/close.png'),
+                /*
+                child: Text(
+                  '${fauth.FirebaseAuth.instance.currentUser?.uid}memomemo'[0],
+                  style: TextStyle(color: Colors.white,),
+                ),
+                backgroundColor: Colors.orangeAccent,
 
-              docUser.delete();
-               */
-            },
+                 */
+              ),
+            ],
           ),
-        ],
-      ));
+          //add
+          //CircleAvatar(child: Text('${user.id[0]}'),), -> id 사용하고 싶을 때. 근데 user1이 아니고 저장된 id임
+          title: Text(
+            '\n' + user.title + '\n',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, fontFamily: 'Gamja_Flower'),
+          ),
+          subtitle: Text(
+            user.text + '\n\n\n' + user.editTime.substring(0, 16),
+            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, fontFamily: 'Gamja_Flower'),
+          ),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.delete,
+                  size: 20.0,
+                  color: Colors.orangeAccent,
+                ),
+                onPressed: () {
+                  deleteId = user.id;
+                  showAlertDialog(context);
+                  /*
+                  final docUser =
+                      FirebaseFirestore.instance.collection('user1').doc(user.id);
+
+                  docUser.delete();
+                   */
+                },
+              ),
+            ],
+          )),
+  );
 
   Stream<List<User>> readUsers() => FirebaseFirestore.instance
-      .collection('${fauth.FirebaseAuth.instance.currentUser?.uid}')
+      .collection('${fauth.FirebaseAuth.instance.currentUser?.uid}memomemo')
       .snapshots()
       .map((snapshot) =>
           snapshot.docs.map((doc) => User.fromJson(doc.data())).toList());
@@ -100,19 +121,27 @@ class _MemoUpdate extends State<MemoUpdate> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('삭제 경고'),
+          titleTextStyle: TextStyle(fontFamily: 'Gamja_Flower', color: Colors.blueAccent),
           content: Text("이미 업로드한 일기를 삭제하시겠습니까?"),
+          contentTextStyle: TextStyle(fontFamily: 'Gamja_Flower', color: Colors.black),
           actions: <Widget>[
             TextButton(
+              style: TextButton.styleFrom(
+                textStyle: TextStyle(fontFamily: 'Gamja_Flower', color: Colors.blueAccent),
+              ),
               child: Text('삭제'),
               onPressed: () {
                 Navigator.pop(context, "삭제");
                 final docUser =
-                    FirebaseFirestore.instance.collection('user1').doc(deleteId);
+                    FirebaseFirestore.instance.collection('${fauth.FirebaseAuth.instance.currentUser?.uid}memomemo').doc(deleteId);
 
                 docUser.delete();
               },
             ),
             TextButton(
+              style: TextButton.styleFrom(
+                textStyle: TextStyle(fontFamily: 'Gamja_Flower', color: Colors.blueAccent),
+              ),
               child: Text('취소'),
               onPressed: () {
                 Navigator.pop(context, "취소");

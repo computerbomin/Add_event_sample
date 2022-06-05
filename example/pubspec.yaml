@@ -113,5 +113,9 @@ flutter:
         - asset: assets/fonts/Noto_Sans_KR/NotoSansKR-Black.otf
           weight: 900
 
+    - family: Gamja_Flower
+      fonts:
+        - asset: assets/fonts/Gamja_Flower/GamjaFlower-Regular.ttf
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

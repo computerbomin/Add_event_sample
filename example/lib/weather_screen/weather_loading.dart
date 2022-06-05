@@ -62,11 +62,19 @@ class _LoadingState extends State<WeatherLoading> {
             return Scaffold(
               body: Center(
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.orangeAccent,
+                      padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                      textStyle: TextStyle(
+                          fontSize: 15, )),
                   onPressed: (){
                   },
                   child: Text(
                     '날씨 정보를 가져오는 중 입니다.',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Gamja_Flower',
+                    ),
                   ),
                 ),
               ),

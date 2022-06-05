@@ -12,7 +12,7 @@ class ActionButton extends StatelessWidget {
     return Material(
       shape: CircleBorder(),
       clipBehavior: Clip.antiAlias,
-      color: Colors.white,
+      color: Colors.white70,
       elevation: 4.0,
       child: IconButton(onPressed: onPressed, icon: icon, color:Colors.orangeAccent,),
     );
